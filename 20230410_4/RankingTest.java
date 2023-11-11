@@ -1,0 +1,34 @@
+package k20230410;
+
+import java.util.Arrays;
+
+public class RankingTest {
+
+	public static void main(String[] args) {
+		
+		int[] score = {80, 100, 70, 100, 90};
+//		석차를 기억하는 기억장소는 1로 초기화
+		int[] rank = new int[score.length];
+		
+		for(int i=0; i<rank.length; i++) {
+			rank[i] = 1;
+		}
+//		System.out.println(Arrays.toString(rank)); 초기화 확인
+		
+		for(int i=0; i<score.length; i++) {
+			for(int j=0; j<score.length; j++) {
+//				내림차순 석차(큰 점수가 1등)
+//				부등호 ">"로 수정하면 오름차순 석차(작은 점수가 1등)
+				if(score[i] < score[j]) {
+					rank[i]++;
+				}
+			}
+		}
+		
+		
+		for(int i=0; i<score.length; i++) {
+			System.out.printf("%3d점은 %d등 입니다.\n", score[i], rank[i]);
+		}
+		
+	}
+}
